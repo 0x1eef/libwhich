@@ -20,10 +20,11 @@ char*
 which(const char *progname)
 {
   char *penv, *path;
-  penv = getenv("PATH");
+  penv = strdup(getenv("PATH"));
   if (penv == NULL) {
     return NULL;
   } else if (progname == NULL) {
+    free(penv);
     return NULL;
   } else {
     path = strtok(penv, COLON);
@@ -31,14 +32,17 @@ which(const char *progname)
       char *exe;
       exe = join(path, progname);
       if (exe == NULL) {
+        free(penv);
         return NULL;
       } else if (is_executable(exe)) {
+        free(penv);
         return exe;
       } else {
         free(exe);
       }
       path = strtok(NULL, COLON);
     }
+    free(penv);
     return NULL;
   }
 }
