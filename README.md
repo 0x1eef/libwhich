@@ -26,10 +26,11 @@ main()
   if (path != NULL) {
     printf("ok: %s\n", path);
     free(path);
+    return EXIT_SUCCESS;
   } else {
     printf("error: 'ls' not found\n");
+    return EXIT_FAILURE;
   }
-  return EXIT_SUCCESS;
 }
 ```
 
@@ -51,10 +52,11 @@ main()
 {
   if (whichp("ls") == 0) {
     printf("'ls' executable found within $PATH\n");
+    return EXIT_SUCCESS;
   } else {
     printf("'ls' executable not found within $PATH\n");
+    return EXIT_FAILURE;
   }
-  return EXIT_SUCCESS;
 }
 ```
 

@@ -7,8 +7,9 @@ main()
 {
   if (whichp("ls") == 0) {
     printf("'ls' executable found within $PATH\n");
+    return EXIT_SUCCESS;
   } else {
     printf("'ls' executable not found within $PATH\n");
+    return EXIT_FAILURE;
   }
-  return EXIT_SUCCESS;
 }

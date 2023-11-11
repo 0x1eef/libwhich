@@ -10,8 +10,9 @@ main()
   if (path != NULL) {
     printf("ok: %s\n", path);
     free(path);
+    return EXIT_SUCCESS;
   } else {
     printf("error: 'ls' not found\n");
+    return EXIT_FAILURE;
   }
-  return EXIT_SUCCESS;
 }
